@@ -1,0 +1,51 @@
+.mainContent{
+background-color:#A52A2A;
+overflow-y:scroll; 
+background-image:linear-gradient(to right bottom,  #0B3861, #000), linear-gradient(transparent, #000 50%);
+width:100vw;
+height:100vh;
+
+}
+
+#root{
+    background-image:linear-gradient(to right bottom,  #0B3861, #000), linear-gradient(transparent, #000 50%);
+}
+
+.slide .desc {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 15px;
+       color:  #000000  !important;
+       padding: 1%;
+       position: relative;
+       margin-left: 15px;
+       margin-top: 12px;
+       margin-bottom:2px
+      
+  }
+  .slide .display{
+    
+      width: 16.6667%;
+      display: inline-block;
+      vertical-align: top;
+      height: 370px;
+      margin-top: 100px
+  }
+  
+  
+    .slide {
+      width: 1400px; 
+      margin:0 auto 30px;
+
+    
+    }
+  
+  #sliderImg {
+      position:relative;
+      padding:0px;
+      border: 3px solid #000;
+      display: block;
+      margin: auto;
+      width: 90%;
+      height: 260px;
+    
+  }
