@@ -12,13 +12,9 @@ class Main extends Component {
         
         <Router>
      
-            <SideBar/>
-   
-            <NavBar/>
-         
+            <SideBar/>        
             <Container fluid className="mainContent">
             <NavBar/>
-         
             <MainDisplay/>
             </Container>
         </Router> )

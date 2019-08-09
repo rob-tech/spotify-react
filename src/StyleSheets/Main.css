@@ -14,7 +14,7 @@ height:100vh;
 .slide .desc {
     font-family: 'Source Serif Pro', serif;
     font-size: 15px;
-       color:  #000000  !important;
+       color:  white  !important;
        padding: 1%;
        position: relative;
        margin-left: 15px;
@@ -35,7 +35,6 @@ height:100vh;
     .slide {
       width: 1400px; 
       margin:0 auto 30px;
-
     
     }
   
