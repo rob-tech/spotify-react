@@ -3,7 +3,7 @@ import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
+    Container,
     Nav,
     NavItem,
     NavLink,
@@ -40,12 +40,11 @@ import {
   
     render() {
       return (
-        <div>
-            
-          <Navbar className="nav" style={{height: 60}} expand="md">
+            <Container fluid className="navContent">
+          <Navbar className="nav" style={{height: 60,}} expand="md">
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="mx-auto"  navbar>
+              <Nav className="mx-auto" navbar >
                 <NavItem>
                   <NavLink className="navlink" href="/">HOME</NavLink>
                 </NavItem>
@@ -61,7 +60,7 @@ import {
               <Input id= "search" placeholder="search" onChange={this.searchInput}  />
             </Nav>
           </Navbar>
-        </div>
+           </Container>
       );
     }
   }

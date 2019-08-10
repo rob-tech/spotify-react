@@ -32,11 +32,13 @@ body {
   position: fixed;
   width: 30px;
   height: 25px;
-  left: 36px;
+  left: 20px;
   top: 20px;
-  background: transparent
-
+  background-color: transparent;
+  margin-left: 2em !important;
+  z-index: 1030 !important;
 }
+
 
 
 .bm-burger-bars {
@@ -126,18 +128,32 @@ body {
 }
 
 .privacy{
-    font-size: 12px
+  font-size: 12px
 }
 
-.nav{
-vertical-align: 10px;
-
-}
 #search{
 height: 30px;
-width: 150px
+width: 150px;
+
 }
+
 .nav .navlink {
   color:  white !important;
- 
 }
+
+.ml-auto {
+  margin-right: 3.5em !important;
+
+}
+.nav .mx-auto{
+  margin-right: auto!important;
+  margin-left: auto!important;
+}
+
+.navContent {
+background-color:black!important;
+position:fixed!important;
+z-index: 1000 !important;
+
+  }
+
