@@ -9,10 +9,10 @@ class MainDisplay extends Component {
     super(props);
     this.state = {
       collections: [
-        {title:"Grammatik", artistSongs: [] },
-        {title:"Bonobo", artistSongs: [] },
-        {title:"Fleetwood Mac", artistSongs: [] }
-      ],
+        { title: "Grammatik", artistSongs: [] },
+        { title: "Bonobo", artistSongs: [] },
+        { title: "Fleetwood Mac", artistSongs: [] }
+      ]
       // artistName: ["Grammatik", "Bonobo", "Fleetwood Mac"]
     };
   }
@@ -23,14 +23,14 @@ class MainDisplay extends Component {
       infinite: false,
       speed: 500,
       slidesToShow: 6,
-      slidesToScroll: 4,
+      slidesToScroll: 6,
       responsive: [
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: true,
+            slidesToShow: 6,
+            slidesToScroll:6,
+            infinite: false,
             dots: true
           }
         },
@@ -38,11 +38,11 @@ class MainDisplay extends Component {
           breakpoint: 600,
           settings: {
             slidesToShow: 2,
-            slidesToScroll: 2
+            slidesToScroll: 2,
           }
         },
         {
-          breakpoint: 480,
+          breakpoint: 360,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2
@@ -60,7 +60,7 @@ class MainDisplay extends Component {
           this.state.collections.map((collectionsObject, index) => {
             return (
               <div key={index}>
-                  <Row className = "titleRow">{collectionsObject.title}</Row>
+                <Row className="titleRow">{collectionsObject.title}</Row>
                 <Slider className="slide" {...settings}>
                   {collectionsObject.artistSongs &&
                     collectionsObject.artistSongs.map(song => (
@@ -74,8 +74,8 @@ class MainDisplay extends Component {
                           alt={song.title}
                         />
                         <div className="desc">
-                        <h5>{song.title}</h5>
-                        <h5 >{song.album.title}</h5>              
+                          <h5>{song.title}</h5>
+                          <h5>{song.album.title}</h5>
                         </div>
                       </div>
                     ))}
@@ -92,7 +92,7 @@ class MainDisplay extends Component {
   };
 
   getSongs = () => {
-    var artistName = ["Grammatik", "Bonobo", "Fleetwood Mac"]
+    var artistName = ["Grammatik", "Bonobo", "Fleetwood Mac"];
     artistName.forEach(async (artist, index) => {
       var response = await fetch(
         "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist,

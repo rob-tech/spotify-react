@@ -1,14 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import image from "../Assets/Spotify_Logo.png";
 
-
-export const SideBar = () =>{
-  
-    return (
-        <>
+export const SideBar = () => {
+  return (
+    <>
       <Menu>
-        <img src={image} className = "logo" width="150px" height="55px" />
+        <img src={image} className="logo" width="150px" height="55px" />
         <a className="menu-item" href="#">
           Home
         </a>
@@ -33,7 +31,10 @@ export const SideBar = () =>{
           Node
         </a>
 
-        <div className="d-flex flex-column align-items-center" id="accountProfile">
+        <div
+          className="d-flex flex-column align-items-center"
+          id="accountProfile"
+        >
           <button type="button" className="bt-styleOne btn-lg">
             SIGN UP
           </button>
@@ -47,6 +48,6 @@ export const SideBar = () =>{
           </a>
         </div>
       </Menu>
-      </>
-    );
-  }
+    </>
+  );
+};

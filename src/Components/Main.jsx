@@ -10,11 +10,9 @@ class Main extends Component {
   render() {
     return (
       <Router>
-               <SideBar/>
-               <NavBar />
+        <SideBar />
+        <NavBar />
         <Container fluid className="mainContent">
-   
-      
           <MainDisplay />
         </Container>
       </Router>
