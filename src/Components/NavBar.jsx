@@ -64,7 +64,7 @@ class NavBar extends Component {
             <Input
               id="search"
               placeholder="search"
-              onChange={this.searchInput}
+              onKeyUp={this.searchInput}
             />
           </Nav>
         </Navbar>

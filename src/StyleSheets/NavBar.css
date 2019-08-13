@@ -39,11 +39,8 @@ body {
   z-index: 1030 !important;
 }
 
-
-
 .bm-burger-bars {
   background: white;
- 
 }
 
 .bm-cross-button {
@@ -51,18 +48,15 @@ body {
   width: 24px;
 }
 
-
 .bm-cross {
   background: #bdc3c7;
 }
-
 
 .bm-menu {
   background: #000;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   width: 240px;
-
 }
 
 .bm-morph-shape {
@@ -71,11 +65,10 @@ body {
 
 .bm-item-list {
   color: #b8b7ad;
-
 }
 
 .bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
+  background: #000;
 }
 
 #accountProfile {
@@ -101,7 +94,7 @@ body {
 }
 
 .bt-styleOne:hover {
-  background: black !important;
+  background: #000 !important;
   color: #fff !important;
   border-color: #b8b7ad;
 }
@@ -118,7 +111,7 @@ body {
 }
 
 .bt-styleTwo:hover {
-  background: black !important;
+  background: #000 !important;
   color: #fff !important;
   border-color: #b8b7ad;
 }
@@ -127,33 +120,29 @@ body {
   margin-left: 10px;
 }
 
-.privacy{
-  font-size: 12px
+.privacy {
+  font-size: 12px;
 }
 
-#search{
-height: 30px;
-width: 150px;
-
+#search {
+  height: 30px;
+  width: 150px;
 }
 
 .nav .navlink {
-  color:  white !important;
+  color: white !important;
 }
 
 .ml-auto {
   margin-right: 3.5em !important;
-
 }
-.nav .mx-auto{
-  margin-right: auto!important;
-  margin-left: auto!important;
+.nav .mx-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
 }
 
 .navContent {
-background-color:black!important;
-position:fixed!important;
-z-index: 1000 !important;
-
-  }
-
+  background-color: #000 !important;
+  position: fixed !important;
+  z-index: 1000 !important;
+}

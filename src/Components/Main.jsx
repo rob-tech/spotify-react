@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { SideBar } from "./SideBar";
-import NavBar from "./NavBar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Container } from "reactstrap";
 import MainDisplay from "./MainDisplay";
 
 class Main extends Component {
@@ -11,10 +9,7 @@ class Main extends Component {
     return (
       <Router>
         <SideBar />
-        <NavBar />
-        <Container fluid className="mainContent">
-          <MainDisplay />
-        </Container>
+        <MainDisplay />
       </Router>
     );
   }

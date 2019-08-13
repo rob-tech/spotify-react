@@ -3,6 +3,7 @@
     linear-gradient(transparent, #000 50%);
   /* overflow-x: scroll; */
   /* position: relative */
+  padding: 100px;
 }
 
 #root {
@@ -15,18 +16,21 @@
   color: white !important;
   padding: 1%;
   margin-top: 2px;
-  text-align: center
+  text-align: center;
 }
 
 .desc h5 {
   font-size: 13px !important;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .slide .display {
   /* width: 16.6667%; */
   /* display: inline-block; */
   vertical-align: top;
-  height: 320px;
+  height: 300px;
   margin-top: 10px;
 }
 
@@ -36,7 +40,6 @@
 
 .slick-prev {
   left: -15px !important;
- 
 }
 
 .slick-next {
@@ -54,7 +57,7 @@
 
 .titleRow {
   padding-top: 20px;
-  padding-left: 70px;
+  padding-left: 40px;
   font-size: 40px;
   font-family: "Anton", sans-serif;
   color: #000;
