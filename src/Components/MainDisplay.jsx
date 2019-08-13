@@ -151,17 +151,21 @@ class MainDisplay extends Component {
     );
 //push all fetches into one array and set the state to last item of the array.
     var selectedArtist = await response.json(); //lady Array
-    var genericArtists = selectedArtist.data;
-    if (!genericArtists.length){
-
+    var genericArtists = selectedArtist.data
+    
+    // selectedArtist = selectedArtist.data;
+    if (genericArtists != null){
+    //  genericArtists  = selectedArtist.data
    //make the array equals to the fetch
-   
-    var generalArtistName = "";
-    //create a new array equals to the fetch
   
+    // var generalArtistName = "";
+    //create a new array equals to the fetch
+   var generalArtistName = ""
 
-      var selectedArtistTwo = selectedArtist.data
-    //do an if statement if selected 2 is not undefined
+      var selectedArtistTwo = genericArtists
+      console.log(selectedArtistTwo)
+
+  
      selectedArtistTwo.forEach((oneSongObject, index) => {
       if (index === 0) {
        generalArtistName = oneSongObject.artist.name;
@@ -173,10 +177,11 @@ class MainDisplay extends Component {
     
     
     
-    this.setState({
-      genericArtist: genericArtists //make the state equals to the array
-    });
+
   }
+  this.setState({
+    genericArtist: genericArtists //make the state equals to the array
+  });
     // this.filterArtistTitle();
   };
 
