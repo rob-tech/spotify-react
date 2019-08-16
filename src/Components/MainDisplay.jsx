@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Container } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import NavBar from "./NavBar";
 
 class MainDisplay extends Component {
@@ -65,30 +65,42 @@ class MainDisplay extends Component {
       <>
         <NavBar triggerSearch={this.search} />
         <Container fluid className="mainContent">
-          {this.state.collections &&
-            this.state.collections.map((collectionsObject, index) => {
+          {this.state.artistTitle &&
+            this.state.artistTitle.map((title, index) => {
+              var indTitle = index;
               return (
-                <div key={index}>
-                  <Slider className="slide" {...settings}>
-                    {collectionsObject.artistSongs &&
-                      collectionsObject.artistSongs.map(song => (
-                        <div key={song.id}>
-                          <img
-                            className="img-fluid"
-                            id="sliderImg"
-                            width="auto"
-                            height="auto"
-                            src={song.album.cover_medium}
-                            alt={song.title}
-                          />
-                          <div className="desc">
-                            <h5>{song.title}</h5>
-                            <h5>{song.album.title}</h5>
+                <>
+                  <Row className="titleRow"> {title} </Row>
+                  {this.state.collections &&
+                    this.state.collections.map((collectionsObject, index) => {
+                      var indObj = index;
+                      if (indObj === indTitle ) {
+                        return (
+                          <div key={index}>
+                            <Slider className="slide" {...settings}>
+                              {collectionsObject.artistSongs &&
+                                collectionsObject.artistSongs.map(song => (
+                                  <div key={song.id}>
+                                    <img
+                                      className="img-fluid"
+                                      id="sliderImg"
+                                      width="auto"
+                                      height="auto"
+                                      src={song.album.cover_medium}
+                                      alt={song.title}
+                                    />
+                                    <div className="desc">
+                                      <h5>{song.title}</h5>
+                                      <h5>{song.album.title}</h5>
+                                    </div>
+                                  </div>
+                                ))}
+                            </Slider>
                           </div>
-                        </div>
-                      ))}
-                  </Slider>
-                </div>
+                        );
+                      }
+                    })}
+                </>
               );
             })}
         </Container>
@@ -98,7 +110,6 @@ class MainDisplay extends Component {
 
   componentDidMount = async () => {
     await this.getSongs();
-   
   };
 
   getSongs = () => {
@@ -137,11 +148,9 @@ class MainDisplay extends Component {
     });
   };
 
-  filterArtist = async filteredArtist => {  //lady 
-
-    // var artistNames = [];
+  filterArtist = async filteredArtist => {
     var response = await fetch(
-      "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + filteredArtist, //URL + lady
+      "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + filteredArtist,
       {
         headers: {
           "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
@@ -149,49 +158,28 @@ class MainDisplay extends Component {
         }
       }
     );
-//push all fetches into one array and set the state to last item of the array.
-    var selectedArtist = await response.json(); //lady Array
-    var genericArtists = selectedArtist.data
-    
-    // selectedArtist = selectedArtist.data;
-    if (genericArtists != null){
-    //  genericArtists  = selectedArtist.data
-   //make the array equals to the fetch
-  
-    // var generalArtistName = "";
-    //create a new array equals to the fetch
-   var generalArtistName = ""
 
-      var selectedArtistTwo = genericArtists
-      console.log(selectedArtistTwo)
+    var selectedArtist = await response.json();
+    var genericArtists = selectedArtist.data;
 
-  
-     selectedArtistTwo.forEach((oneSongObject, index) => {
-      if (index === 0) {
-       generalArtistName = oneSongObject.artist.name;
-      }
-      console.log(generalArtistName )
+    if (genericArtists != null) {
+      var generalArtistName = "";
+
+      var selectedArtistTwo = genericArtists;
+      console.log(selectedArtistTwo);
+
+      selectedArtistTwo.forEach((oneSongObject, index) => {
+        if (index === 0) {
+          generalArtistName = oneSongObject.artist.name;
+        }
+        console.log(generalArtistName);
+      });
+    }
+    this.setState({
+      genericArtistTitle: generalArtistName,
+      genericArtist: genericArtists
     });
-
-  
-    
-    
-    
-
-  }
-  this.setState({
-    genericArtist: genericArtists //make the state equals to the array
-  });
-    // this.filterArtistTitle();
   };
-
-  // filterArtistTitle = () => {
-  //   var singleArtistName = "";
-  //   var artistNames = [];
-
-
-   
-  // };
 }
 
 export default MainDisplay;
