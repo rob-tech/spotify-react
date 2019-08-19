@@ -1,19 +1,23 @@
 .mainContent {
   background-image: linear-gradient(to right bottom, #0b3861, #000),
     linear-gradient(transparent, #000 50%);
-  /* overflow-x: scroll; */
+  overflow-y: scroll;
   /* position: relative */
-  padding: 100px;
+  padding-top: 100px;
+
+height: 100vh
+  
 }
 
 #root {
   background-image: linear-gradient(to right bottom, #0b3861, #000),
     linear-gradient(transparent, #000 50%);
+    height: 100vh;
 }
 
 .desc {
   font-family: "Source Serif Pro", serif;
-  color: white !important;
+  
   padding: 1%;
   margin-top: 2px;
   text-align: center;
@@ -24,6 +28,13 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.desc h5 a {
+  color: white !important;
+}
+
+.desc h5 a:hover {
+  text-decoration: none;
 }
 
 .slide .display {
