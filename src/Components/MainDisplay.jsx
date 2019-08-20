@@ -6,6 +6,7 @@ import { Container, Row } from "reactstrap";
 import NavBar from "./NavBar";
 import FilteredSearch from "./FilteredSearch";
 
+
 class MainDisplay extends Component {
   constructor(props) {
     super(props);
@@ -73,6 +74,7 @@ class MainDisplay extends Component {
           {this.state.artistTitle &&
             this.state.artistTitle.map((title, index) => {
               var indTitle = index;
+              console.log(indTitle, title);
               return (
                 <div key={index}>
                   {!this.state.genericArtistTitle && (
@@ -101,7 +103,9 @@ class MainDisplay extends Component {
                                       <div className="desc">
                                         <h5>
                                           {" "}
-                                          <a href={song.title}>{song.title}</a>
+                                            <a href={song.title}>
+                                              {song.title}
+                                            </a>
                                         </h5>
                                         <h5>
                                           {" "}
@@ -131,10 +135,11 @@ class MainDisplay extends Component {
   };
 
   getSongs = async () => {
-    var singleArtistName = "";
+    // var singleArtistName = "";
     var artistNames = [];
     var artistName = ["Grammatik", "Bonobo", "Fleetwood Mac"];
     artistName.forEach(async (artist, index) => {
+      artistNames.push(artist);
       var response = await fetch(
         "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + artist,
         {
@@ -148,14 +153,15 @@ class MainDisplay extends Component {
       var songsArray = await response.json();
       var collection = this.state.collections;
       collection[index].artistSongs = songsArray.data;
-      collection[index].artistSongs.forEach((songsObject, index) => {
-        if (index === 0) {
-          singleArtistName = songsObject.artist.name.toUpperCase();
-          console.log(singleArtistName);
-        }
-      });
+      // collection[index].artistSongs.forEach((songsObject, index) => {
+      //   console.log(songsObject)
+      //   if (index === 0) {
+      //     singleArtistName = songsObject.artist.name.toUpperCase();
+      //     console.log(singleArtistName);
 
-      artistNames.push(singleArtistName);
+      //   }
+      // });
+      // artistNames.push(singleArtistName);
 
       this.setState({
         collections: collection,
