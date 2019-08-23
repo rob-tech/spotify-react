@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { SideBar } from "./SideBar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import MainDisplay from "./MainDisplay";
-import Artist from "./Artist";
+import Album from "./Album";
 
 class Main extends Component {
   state = {};
@@ -11,7 +11,7 @@ class Main extends Component {
       <Router>
         <SideBar />
         <Route path="/" component={MainDisplay} />
-        <Route path="/album/:albumId" component={Artist} />
+        <Route path="/album/:albumId" component={Album} />
       </Router>
     );
   }

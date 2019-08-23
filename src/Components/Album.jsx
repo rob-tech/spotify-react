@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container } from "reactstrap";
 import NavBar from "./NavBar";
 
-class Artist extends Component {
+class Album extends Component {
   state = {};
   render() {
     return (
@@ -49,4 +49,4 @@ class Artist extends Component {
     }
 }
 
-export default Artist;
+export default Album;
