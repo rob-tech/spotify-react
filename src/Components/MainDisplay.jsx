@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Container, Row } from "reactstrap";
+import { Container } from "reactstrap";
 import NavBar from "./NavBar";
 import FilteredSearch from "./FilteredSearch";
-
+import { Link } from "react-router-dom";
 
 class MainDisplay extends Component {
   constructor(props) {
@@ -74,11 +74,10 @@ class MainDisplay extends Component {
           {this.state.artistTitle &&
             this.state.artistTitle.map((title, index) => {
               var indTitle = index;
-              console.log(indTitle, title);
               return (
                 <div key={index}>
                   {!this.state.genericArtistTitle && (
-                    <Row className="titleRow"> {title} </Row>
+                    <span className="titleRow"> {title} </span>
                   )}
                   {this.state.collections &&
                     this.state.collections.map((collectionsObject, index) => {
@@ -101,18 +100,13 @@ class MainDisplay extends Component {
                                         alt={song.title}
                                       />
                                       <div className="desc">
-                                        <h5>
-                                          {" "}
-                                            <a href={song.title}>
-                                              {song.title}
-                                            </a>
-                                        </h5>
-                                        <h5>
-                                          {" "}
-                                          <a href={song.album.title}>
-                                            {song.album.title}
-                                          </a>
-                                        </h5>
+                                        <h5>{song.title}</h5>
+                                        <Link
+                                          to={"/album/" + song.album.id}
+                                          className="titleLink"
+                                        >
+                                          <h5>{song.album.title}</h5>
+                                        </Link>
                                       </div>
                                     </div>
                                   ))}

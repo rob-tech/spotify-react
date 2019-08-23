@@ -4,20 +4,17 @@
   overflow-y: scroll;
   /* position: relative */
   padding-top: 100px;
-
-height: 100vh
-  
+  height: 100vh;
 }
 
 #root {
   background-image: linear-gradient(to right bottom, #0b3861, #000),
     linear-gradient(transparent, #000 50%);
-    height: 100vh;
+  height: 100vh;
 }
 
 .desc {
   font-family: "Source Serif Pro", serif;
-  
   padding: 1%;
   margin-top: 2px;
   text-align: center;
@@ -29,11 +26,11 @@ height: 100vh
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.desc h5 a {
+.desc h5 {
   color: white !important;
 }
 
-.desc h5 a:hover {
+.desc h5:hover {
   text-decoration: none;
 }
 
@@ -72,4 +69,8 @@ height: 100vh
   font-size: 40px;
   font-family: "Anton", sans-serif;
   color: #000;
+}
+
+.titleLink:hover {
+  text-decoration: none;
 }
