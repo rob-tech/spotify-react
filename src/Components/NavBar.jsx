@@ -10,8 +10,6 @@ import {
   Input
 } from "reactstrap";
 
-// import { Link } from "react-router-dom";
-
 class NavBar extends Component {
   state = {};
   constructor(props) {
@@ -61,11 +59,13 @@ class NavBar extends Component {
             </Nav>
           </Collapse>
           <Nav className="ml-auto">
+
             <Input
               id="search"
               placeholder="search"
               onKeyUp={this.searchInput}
             />
+      
           </Nav>
         </Navbar>
       </Container>

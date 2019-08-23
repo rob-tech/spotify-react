@@ -3,6 +3,7 @@ import { Row } from "reactstrap";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { Container } from "reactstrap";
 
 class FilteredSearch extends Component {
   render() {
@@ -43,8 +44,10 @@ class FilteredSearch extends Component {
     };
     return (
       <>
+
         {this.props.filteredTitle && (
           <>
+           <Container fluid className="mainContent">
             <Row className="titleRow"> {this.props.filteredTitle} </Row>
             <Slider className="slide" {...settings}>
               {this.props.filteredArtist &&
@@ -71,6 +74,7 @@ class FilteredSearch extends Component {
                   </div>
                 ))}
             </Slider>
+            </Container>
           </>
         )}
       </>

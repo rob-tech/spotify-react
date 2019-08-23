@@ -3,13 +3,24 @@ import { Container } from "reactstrap";
 import NavBar from "./NavBar";
 
 class Album extends Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      albumDetails: []
+    };
+  }
   render() {
+    
     return (
       <>
-        <NavBar triggerSearch={this.props.search} />
         <Container fluid className="mainContent">
-          <h5>hello</h5>
+        {/* {this.state.albumDetails &&
+            this.state.albumDetails.tracks.data.map((album, index) => {
+              return(
+          <h5>{album.tracks.data.title}</h5>
+              )
+            })} */}
+        <h5>hello</h5>
         </Container>
       </>
     );
@@ -17,7 +28,7 @@ class Album extends Component {
 
   componentDidMount = async () => {
     var albumId = this.props.match.params.albumId;
-    await this.fetchAlbum(albumId)
+    await this.fetchAlbum(albumId);
   };
 
   //   componentDidUpdate = async prevProps => {
@@ -26,27 +37,23 @@ class Album extends Component {
   //     }
   //   };
 
-  fetchAlbum = async(albumId) => {
-
- var response = await fetch(
-        "https://deezerdevs-deezer.p.rapidapi.com/album/" + albumId,
-        {
-          headers: {
-            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-            "x-rapidapi-key":
-              "784a08652cmsha32051208a637acp1f594djsna6648f90d98e"
-          }
+  fetchAlbum = async albumId => {
+    var album = await fetch(
+      "https://deezerdevs-deezer.p.rapidapi.com/album/" + albumId,
+      {
+        headers: {
+          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          "x-rapidapi-key": "784a08652cmsha32051208a637acp1f594djsna6648f90d98e"
         }
-      );
+      }
+    );
 
-      console.log(response)
+    console.log(album);
 
-    //   this.setState({
-    //     movieID: imdbID,
-    //     movie: movie,
-    //     comments: comments
-    //   });
-    }
+    this.setState({
+      albumDetails: album
+    });
+  };
 }
 
 export default Album;

@@ -3,8 +3,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Container } from "reactstrap";
-import NavBar from "./NavBar";
-import FilteredSearch from "./FilteredSearch";
 import { Link } from "react-router-dom";
 
 class MainDisplay extends Component {
@@ -16,15 +14,9 @@ class MainDisplay extends Component {
         { artistSongs: [] },
         { artistSongs: [] }
       ],
-      artistTitle: [],
-      genericArtist: null,
-      genericArtistTitle: null
+      artistTitle: []
     };
   }
-
-  search = value => {
-    this.filterArtist(value);
-  };
 
   render() {
     var settings = {
@@ -65,53 +57,43 @@ class MainDisplay extends Component {
 
     return (
       <>
-        <NavBar triggerSearch={this.search} />
         <Container fluid className="mainContent">
-          <FilteredSearch
-            filteredArtist={this.state.genericArtist}
-            filteredTitle={this.state.genericArtistTitle}
-          />
           {this.state.artistTitle &&
             this.state.artistTitle.map((title, index) => {
               var indTitle = index;
               return (
                 <div key={index}>
-                  {!this.state.genericArtistTitle && (
-                    <span className="titleRow"> {title} </span>
-                  )}
+                  <span className="titleRow"> {title} </span>
                   {this.state.collections &&
                     this.state.collections.map((collectionsObject, index) => {
                       var indObj = index;
-
                       if (indObj === indTitle) {
                         return (
                           <div key={index}>
-                            {!this.state.genericArtist && (
-                              <Slider className="slide" {...settings}>
-                                {collectionsObject.artistSongs &&
-                                  collectionsObject.artistSongs.map(song => (
-                                    <div key={song.id}>
-                                      <img
-                                        className="img-fluid"
-                                        id="sliderImg"
-                                        width="auto"
-                                        height="auto"
-                                        src={song.album.cover_medium}
-                                        alt={song.title}
-                                      />
-                                      <div className="desc">
-                                        <h5>{song.title}</h5>
-                                        <Link
-                                          to={"/album/" + song.album.id}
-                                          className="titleLink"
-                                        >
-                                          <h5>{song.album.title}</h5>
-                                        </Link>
-                                      </div>
+                            <Slider className="slide" {...settings}>
+                              {collectionsObject.artistSongs &&
+                                collectionsObject.artistSongs.map(song => (
+                                  <div key={song.id}>
+                                    <img
+                                      className="img-fluid"
+                                      id="sliderImg"
+                                      width="auto"
+                                      height="auto"
+                                      src={song.album.cover_medium}
+                                      alt={song.title}
+                                    />
+                                    <div className="desc">
+                                      <h5>{song.title}</h5>
+                                      <Link
+                                        to={"/album/" + song.album.id}
+                                        className="titleLink"
+                                      >
+                                        <h5>{song.album.title}</h5>
+                                      </Link>
                                     </div>
-                                  ))}
-                              </Slider>
-                            )}
+                                  </div>
+                                ))}
+                            </Slider>
                           </div>
                         );
                       }
@@ -161,38 +143,6 @@ class MainDisplay extends Component {
         collections: collection,
         artistTitle: artistNames
       });
-    });
-  };
-
-  filterArtist = async filteredArtist => {
-    var response = await fetch(
-      "https://deezerdevs-deezer.p.rapidapi.com/search?q=" + filteredArtist,
-      {
-        headers: {
-          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-          "x-rapidapi-key": "784a08652cmsha32051208a637acp1f594djsna6648f90d98e"
-        }
-      }
-    );
-
-    var selectedArtist = await response.json();
-    var genericArtists = selectedArtist.data;
-
-    if (genericArtists != null) {
-      var generalArtistName = "";
-      var selectedArtistTwo = genericArtists;
-      console.log(selectedArtistTwo);
-
-      selectedArtistTwo.forEach((oneSongObject, index) => {
-        if (index === 0) {
-          generalArtistName = oneSongObject.artist.name.toUpperCase();
-        }
-        console.log(generalArtistName);
-      });
-    }
-    this.setState({
-      genericArtistTitle: generalArtistName,
-      genericArtist: genericArtists
     });
   };
 }
