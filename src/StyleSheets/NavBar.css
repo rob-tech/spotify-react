@@ -133,6 +133,10 @@ body {
   color: white !important;
 }
 
+.nav .navlink:hover {
+  color: #bc8f8f!important;
+}
+
 .ml-auto {
   margin-right: 3.5em !important;
 }

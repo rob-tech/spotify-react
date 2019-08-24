@@ -14,7 +14,8 @@ class MainDisplay extends Component {
         { artistSongs: [] },
         { artistSongs: [] }
       ],
-      artistTitle: []
+      artistTitle: [],
+      hover: false
     };
   }
 
@@ -82,7 +83,7 @@ class MainDisplay extends Component {
                                       src={song.album.cover_medium}
                                       alt={song.title}
                                     />
-                                    <div className="desc">
+                                    <div className="desc"  onMouseOver= {this.mouseOver}>
                                       <h5>{song.title}</h5>
                                       <Link
                                         to={"/album/" + song.album.id}
@@ -145,6 +146,10 @@ class MainDisplay extends Component {
       });
     });
   };
+
+  mouseOver = () => {
+    this.setState({hover: true});
+}
 }
 
 export default MainDisplay;

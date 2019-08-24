@@ -14,6 +14,9 @@ class NavBar extends Component {
   state = {};
   constructor(props) {
     super(props);
+    this.state = {
+      hover: false
+    };
 
     this.toggle = this.toggle.bind(this);
     this.state = {
@@ -41,7 +44,7 @@ class NavBar extends Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="mx-auto" navbar>
-              <NavItem>
+              <NavItem onMouseOver= {this.mouseOver}>
                 <NavLink className="navlink" href="/">
                   HOME
                 </NavLink>
@@ -71,6 +74,9 @@ class NavBar extends Component {
       </Container>
     );
   }
+  mouseOver = () => {
+    this.setState({hover: true});
+}
 }
 
 export default NavBar;

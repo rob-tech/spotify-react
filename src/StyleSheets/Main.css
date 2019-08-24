@@ -71,6 +71,10 @@
   color: #000;
 }
 
-.titleLink:hover {
-  text-decoration: none;
+.desc h5:hover {
+  color: #bc8f8f !important;
+}
+
+.titleLink {
+  text-decoration: none !important;
 }

@@ -6,21 +6,22 @@ class Album extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      albumDetails: []
+      albumDetails: null
     };
   }
+
   render() {
-    
     return (
       <>
         <Container fluid className="mainContent">
-        {/* {this.state.albumDetails &&
-            this.state.albumDetails.tracks.data.map((album, index) => {
+        {this.state.albumDetails &&
+            this.state.albumDetails.tracks.data.map((track, index) => {
               return(
-          <h5>{album.tracks.data.title}</h5>
+                <div key={index}>
+          <h5>{track.title}</h5>
+          </div>
               )
-            })} */}
-        <h5>hello</h5>
+            })}
         </Container>
       </>
     );
@@ -38,7 +39,7 @@ class Album extends Component {
   //   };
 
   fetchAlbum = async albumId => {
-    var album = await fetch(
+    var response = await fetch(
       "https://deezerdevs-deezer.p.rapidapi.com/album/" + albumId,
       {
         headers: {
@@ -48,7 +49,7 @@ class Album extends Component {
       }
     );
 
-    console.log(album);
+    var album = await response.json();
 
     this.setState({
       albumDetails: album
